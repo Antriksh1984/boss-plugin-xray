@@ -1,0 +1,13 @@
+{
+  "manifestVersion": 1,
+  "pluginId": "ai.rever.boss.plugin.dynamic.xray",
+  "displayName": "Plugin X-Ray",
+  "version": "0.1.0",
+  "apiVersion": "1.0.20",
+  "minBossVersion": "8.16.30",
+  "mainClass": "ai.rever.boss.plugin.dynamic.xray.XrayDynamicPlugin",
+  "type": "service",
+  "description": "Read-only static scan of a plugin JAR: what it can do, before you load it",
+  "author": "Antriksh",
+  "url": "https://github.com/Antriksh1984/boss-plugin-xray"
+}
