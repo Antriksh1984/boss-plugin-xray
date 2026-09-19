@@ -106,6 +106,10 @@ internal object Fixtures {
 
     fun info(cls: Class<*>): ClassInfo = ClassFileReader.read(bytes(cls))
 
+    /** The bytes of a class by internal name, for building JARs that hold inner classes too. */
+    fun bytesOf(internalName: String): ByteArray =
+        Fixtures::class.java.classLoader.getResourceAsStream("$internalName.class")!!.use { it.readBytes() }
+
     /** The class and its compiler-generated inner classes (lambdas, coroutine state machines), as a JAR would hold them. */
     fun withInner(cls: Class<*>): List<ClassInfo> {
         val dir = java.io.File(cls.protectionDomain.codeSource.location.toURI()).resolve(cls.packageName.replace('.', '/'))

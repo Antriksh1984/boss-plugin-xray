@@ -66,7 +66,7 @@ class PluginLoadTest {
     }
 
     @Test
-    fun `registering exposes exactly the three read-only tools and no other host surface`() {
+    fun `registering exposes exactly the four read-only tools and no other host surface`() {
         val host = hostLikeLoader()
         URLClassLoader(arrayOf(pluginJar.toURI().toURL()), host).use { loader ->
             val plugin = loader.loadClass("ai.rever.boss.plugin.dynamic.xray.XrayDynamicPlugin").getDeclaredConstructor().newInstance()
@@ -83,7 +83,7 @@ class PluginLoadTest {
 
             assertEquals(listOf("registerMcpToolProvider"), calls, "the plugin must ask the host for nothing else")
             val tools = assertNotNull(provider).tools()
-            assertEquals(setOf("xray_scan_jar", "xray_scan_installed", "xray_capabilities"), tools.map { it.name }.toSet())
+            assertEquals(setOf("xray_scan_jar", "xray_diff_jars", "xray_scan_installed", "xray_capabilities"), tools.map { it.name }.toSet())
             assertTrue(tools.all { it.readOnly })
         }
     }

@@ -52,7 +52,7 @@ class XrayMcpToolsTest {
     @Test
     fun `every tool is read-only and named in the plugin's own namespace`() {
         val all = tools.tools()
-        assertEquals(setOf("xray_scan_jar", "xray_scan_installed", "xray_capabilities"), all.map { it.name }.toSet())
+        assertEquals(setOf("xray_scan_jar", "xray_diff_jars", "xray_scan_installed", "xray_capabilities"), all.map { it.name }.toSet())
         assertTrue(all.all { it.readOnly }, "a scanner must never declare a side effect it does not have")
     }
 
